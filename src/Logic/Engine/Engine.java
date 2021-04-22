@@ -22,11 +22,53 @@ import Logic.CommandType.*;
 import Storage.Writer;
 import Storage.Reader;
 
+/**
+ * This singleton class is essentially the backbone of this program. All data
+ * manipulation takes place in this class.
+ *
+ * Using this class, a task is assigned into different projects of Type Project
+ * which essentially contains an ArrayList of objects of type Task. These
+ * objects store all the information essential for storage and manipulation of
+ * tasks. The projects have their names stored in a global ArrayList for easy
+ * reference and another ArrayList of Projects, projectsList is used to store
+ * all the projects.
+ *
+ *
+ *
+ */
 //@author A0110924R
 public class Engine {
 
 	/**************************************** Message Prompts ************************************************/
 	private static final String MESSAGE_UNDO_SUCCESS = "Undone!";
+	private static final String MESSAGE_REDO_ERROR = "Nothing to redo!";
+	private static final String MESSAGE_REDO_SUCCESS = "Redone!";
+	private static final String MESSAGE_ERROR_WRONG_CMDTYPE = null;
+	private static final String MESSAGE_ERROR_COMMAND_TYPE_NULL = null;
+	private static final String MESSAGE_UPDATE_TASK_FOR_EDIT = "Please update your task";
+	private static final String MESSAGE_ERROR_UNABLE_TO_EDIT = "Cannot edit!";
+	private static final String MESSAGE_NO_INDEX_SPECIFIED = "No index has been specified!";
+	private static final String MESSAGE_FOR_DELETE = "Please enter the index number of the task you want to delete:";
+	private static final String MESSAGE_NOTHING_TO_DELETE = "Nothing to delete!";
+	private static final String MESSAGE_SPECIFY_INDEX_FOR_ISCOMPLETE = "Please specify an index to be marked as completed";
+	private static final String MESSAGE_SPECIFY_INDEX_FOR_EDIT = "Please specify an index you wish to edit";
+	private static final String MESSAGE_REMOVE_SUCCESS = " has been removed.";
+	private static final String MESSAGE_MARKED_AS_ONGOING = " marked as ongoing.";
+	private static final String MESSAGE_MARKED_AS_COMPLETE = " marked as complete.";
+	private static final String MESSAGE_ERROR_INVALID_TASK = " No such task exists!";
+	private static final int N = 999;
+	private static final String MESSAGE_RESET = "System restarted!";
+
+	/****************************** Data Structures and Objects ********************/
+
+	private static EpiphanyInterpreter interp;
+	private static Engine engine;
+	public static ArrayList<String> projectNames;
+	public static ArrayList<Project> projectsList;
+	private static Stack<PastCommands> undoStack;
+	private static Stack<PastCommands> redoStack;
+	public static ArrayList<DisplayObject> ListByDate;
+	private static String[] months;
 
 	private Engine() throws IOException, ParseException {
 		engine = this;
