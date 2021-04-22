@@ -40,14 +40,6 @@ import Storage.Reader;
 public class Engine {
 
 	/**************************************** Message Prompts ************************************************/
-
-	private static final String MESSAGE_WELCOME = "";
-	private static final String MESSAGE_NO_ENTRY = "No such entry exists.";
-	private static final String MESSAGE_ADD = "Task Added!";
-	private static final String MESSAGE_ADD_DUPLICATE = "This task already exists!";
-	private static final String MESSAGE_NOTHING_TO_DISPLAY_ERROR = "No items to display.";
-	private static final String MESSAGE_INVALID_SEARCH = "No results to display.";
-	private static final String MESSAGE_UNDO_ERROR = "Nothing to undo!";
 	private static final String MESSAGE_UNDO_SUCCESS = "Undone!";
 	private static final String MESSAGE_REDO_ERROR = "Nothing to redo!";
 	private static final String MESSAGE_REDO_SUCCESS = "Redone!";
